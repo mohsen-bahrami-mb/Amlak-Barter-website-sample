@@ -72,3 +72,11 @@ setInterval(() => {
     numberWelcomeSlider++
 }, 6000)
 //////////wlcome slider-end//////////
+
+
+//////////click slider//////////
+
+//////////click slider-end//////////
+
+
+
