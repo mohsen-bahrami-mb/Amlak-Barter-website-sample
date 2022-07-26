@@ -31,7 +31,6 @@
 
 /* font-end */
 
-/* all */
 :root {
     --Trans-back-color1: rgba(14, 177, 192, 0.3);
     --Trans-back-color2: rgba(14, 177, 192, 0.7);
@@ -39,89 +38,6 @@
     --text-color-2: rgb(8, 67, 72);
     --hover-color: rgb(234, 255, 0);
 }
-
-* {
-    font-family: vazir;
-    box-sizing: border-box;
-}
-
-body {
-    font-size: 16px;
-    margin: 0px;
-    text-align: center;
-    background-color: #8181d8;
-}
-
-main {
-    overflow: hidden;
-}
-
-a {
-    text-decoration: none;
-}
-
-/* hover */
-.hover {
-    transform: translateY(0px);
-    transition: all .3s;
-}
-
-.hover:hover {
-    transform: translateY(-2px);
-    cursor: pointer;
-    color: var(--hover-color);
-    font-weight: bolder;
-    text-shadow: 0px 2px 10px var(--text-color-1);
-
-}
-
-/* hover-end */
-
-/* btn */
-.btn {
-    color: var(--text-color-1);
-    background-color: var(--text-color-2);
-    border: 0.1rem solid var(--text-color-1);
-    cursor: pointer;
-    border-radius: 0.5rem;
-    transition: all 0.3s;
-}
-
-.btn-un {
-    color: var(--text-color-2);
-    background-color: var(--text-color-1);
-    border: 0.1rem solid var(--text-color-2);
-    cursor: pointer;
-    border-radius: 0.5rem;
-    transition: all 0.3s;
-}
-
-/* btn-end */
-
-/* collapse */
-.collapse-menu-btn {
-    display: none;
-}
-
-.menu-line1, .menu-line2, .menu-line3 {
-    width: 1.5rem;
-    height: .4rem;
-}
-
-
-.collapse-menu-off {
-    display: flex;
-}
-
-.collapse-item {
-    padding: 1rem;
-    color: var(--text-color-1);
-    border: none;
-    border-bottom: .1rem solid var(--text-color-1);
-}
-
-/* collapse-end */
-/* all-end */
 
 /* header */
 /* navbar top */
@@ -209,7 +125,6 @@ a {
 /* header-end */
 
 /* main */
-/* click-slider */
 #lic-hon {
     display: flex;
     /*in mediaQery*/
@@ -223,7 +138,76 @@ a {
     margin: 2rem;
 }
 
+/* main-end */
+
+/* all */
+* {
+    font-family: vazir;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    margin: 0px;
+    text-align: center;
+    background-color: #8181d8;
+}
+
+main {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* btn */
+.btn {
+    color: var(--text-color-1);
+    background-color: var(--text-color-2);
+    border: 0.1rem solid var(--text-color-1);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+
+.btn-un {
+    color: var(--text-color-2);
+    background-color: var(--text-color-1);
+    border: 0.1rem solid var(--text-color-2);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+
+/* btn-end */
+
+/* collapse */
+.collapse-menu-btn {
+    display: none;
+}
+
+.menu-line1, .menu-line2, .menu-line3 {
+    width: 1.5rem;
+    height: .4rem;
+}
+
+
+.collapse-menu {
+    display: flex;
+}
+
+.collapse-item {
+    padding: 1rem;
+    color: var(--text-color-1);
+    border: none;
+    border-bottom: .1rem solid var(--text-color-1);
+}
+/* collapse-end */
+
+/* click-slider */
 .click-slider {
+    position: relative;
     min-width: 13rem;
     max-width: 28rem;
     display: block;
@@ -236,23 +220,27 @@ a {
     box-shadow: -2px 2px 15px 3px var(--Trans-back-color2);
 }
 
-.content-slider {
-    position: relative;
-}
-
-.img-slider-group {
-    display: flex;
+.slider-group {
+    display: none;
     overflow: hidden;
     margin-bottom: 1.5rem;
     transition: all 0.3s;
 }
 
 .img-slider {
+    display: block;
     width: 100%;
     border-radius: .7rem;
+    object-fit: contain;
+    width: 100%;
 }
 
-.cl-slider {
+.txt-slider {
+    display: block;
+    width: 100%;
+}
+
+.selector-slider {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -271,21 +259,39 @@ a {
     cursor: pointer;
     transition: all 0.3s;
 }
-.cl-slider:hover {
+
+.selector-slider:hover {
     color: var(--hover-color);
     background-color: #242424d2;
 }
 
-.cl-right {
+.selector-right {
     transform: translateX(-100%);
     left: 100%;
 }
-
-.txt-slider {}
-
 /* click-slider-end */
-/* main-end */
 
+.active {
+    display: block;
+}
+
+/* hover */
+.hover {
+    transform: translateY(0px);
+    transition: all .3s;
+}
+
+.hover:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+    color: var(--hover-color);
+    font-weight: bolder;
+    text-shadow: 0px 2px 10px var(--text-color-1);
+
+}
+
+/* hover-end */
+/* all-end */
 
 /* media coery */
 @media screen and (max-width:900px) {
@@ -333,5 +339,4 @@ a {
         border-left: none;
     }
 }
-
 /* media coery-end */
