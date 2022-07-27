@@ -2,31 +2,31 @@
 @font-face {
     font-family: "vazir";
     src: url("../fonts/Vazir-Thin-FD-WOL.ttf"), url("../fonts/Vazir-Thin.ttf");
-    /* font-weight: 1; */
+    font-weight: 1;
 }
 
 @font-face {
     font-family: "vazir";
     src: url("../fonts/Vazir-Light-FD-WOL.ttf"), url("../fonts/Vazir-Light.ttf");
-    /* font-weight: 2; */
+    font-weight: 2;
 }
 
 @font-face {
     font-family: "vazir";
     src: url("../fonts/Vazir-FD-WOL.ttf"), url("../fonts/Vazir.ttf");
-    /* font-weight: 3; */
+    font-weight: 3;
 }
 
 @font-face {
     font-family: "vazir";
     src: url("../fonts/Vazir-Medium-FD-WOL.ttf"), url("../fonts/Vazir-Medium.ttf");
-    /* font-weight: 4; */
+    font-weight: 4;
 }
 
 @font-face {
     font-family: "vazir";
     src: url("../fonts/Vazir-Bold-FD-WOL.ttf"), url("../fonts/Vazir-Bold.ttf");
-    /* font-weight: 5; */
+    font-weight: 5;
 }
 
 /* font-end */
@@ -36,6 +36,7 @@
     --Trans-back-color2: rgba(14, 177, 192, 0.7);
     --text-color-1: white;
     --text-color-2: rgb(8, 67, 72);
+    --text-color-3: black;
     --hover-color: rgb(234, 255, 0);
 }
 
@@ -127,11 +128,8 @@
 /* main */
 #lic-hon {
     display: flex;
-    /*in mediaQery*/
-    flex-wrap: wrap;
-    /*in mediaQery*/
+    flex-wrap: nowrap;
     justify-content: center;
-    background-color: red;
 }
 
 #lic-hon>div {
@@ -150,7 +148,7 @@ body {
     font-size: 16px;
     margin: 0px;
     text-align: center;
-    background-color: #8181d8;
+    background-color: rgb(247, 250, 204);
 }
 
 main {
@@ -203,21 +201,35 @@ a {
     border: none;
     border-bottom: .1rem solid var(--text-color-1);
 }
+
 /* collapse-end */
 
 /* click-slider */
 .click-slider {
     position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0.7rem;
     min-width: 13rem;
     max-width: 28rem;
+    border-radius: .5rem;
+    text-align: center;
+    background-color: white;
+    box-shadow: -2px 2px 15px 3px var(--Trans-back-color2);
+}
+
+.tittle-slider {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 5;
+    color: var(--text-color-2);
+}
+
+.content-slider {
     display: block;
     width: 100%;
     height: 100%;
-    padding: 0.7rem;
-    text-align: center;
-    border-radius: .5rem;
-    background-color: white;
-    box-shadow: -2px 2px 15px 3px var(--Trans-back-color2);
+    overflow: hidden;
 }
 
 .slider-group {
@@ -230,8 +242,10 @@ a {
 .img-slider {
     display: block;
     width: 100%;
+    overflow: hidden;
+    margin-bottom: 2rem;
     border-radius: .7rem;
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
 }
 
@@ -240,17 +254,17 @@ a {
     width: 100%;
 }
 
-.selector-slider {
+.selector-prev {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bolder;
     left: 0%;
-    top: 50%;
-    width: 3rem;
-    height: 3rem;
+    top: 40%;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     border-bottom-right-radius: 100%;
     border-bottom-left-radius: 100%;
@@ -260,15 +274,36 @@ a {
     transition: all 0.3s;
 }
 
-.selector-slider:hover {
+.selector-prev:hover {
     color: var(--hover-color);
     background-color: #242424d2;
 }
 
-.selector-right {
-    transform: translateX(-100%);
-    left: 100%;
+.selector-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bolder;
+    right: 0%;
+    top: 40%;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    background-color: #6767699f;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
 }
+
+.selector-next:hover {
+    color: var(--hover-color);
+    background-color: #242424d2;
+}
+
 /* click-slider-end */
 
 .active {
@@ -295,6 +330,12 @@ a {
 
 /* media coery */
 @media screen and (max-width:900px) {
+    /* main */
+    #lic-hon {
+        flex-wrap: wrap;
+    }
+        /* main-end */
+
     .collapse-menu-btn {
         display: flex;
         flex-direction: column;
@@ -338,5 +379,7 @@ a {
     .nav-item {
         border-left: none;
     }
+
 }
+
 /* media coery-end */

@@ -73,42 +73,35 @@ setInterval(() => {
 }, 6000)
 //////////wlcome slider-end//////////
 
-document.querySelector(".active").las
 //////////click slider//////////
-addEventListener("click", (e) => {
-    let clickSlider = e.target.parentElement;
-    let childs = Array.from(clickSlider.children);
-    if (e.target.className.includes("selector-slider") && e.target.className.includes("selector-left")) {
-        childs.forEach((child)=>{
-            if(child.className.includes("active") && child.previousElementSibling){
-                // console.log(child.className.includes("active"))
-                child.classList.remove('active');
-                child.previousElementSibling.classList.add('active');
-            } 
-            else if(child.className.includes("active") && !child.previousElementSibling){
-                child.classList.remove('active');
-                clickSlider.children[clickSlider.children.length-2].classList.add('active')
-            }
-        })
+let index = 0;
+function changeSlider(getTarget) {
+    let target = getTarget;
+    let content = target.parentElement.querySelector(".content-slider");
+    let translateX;
+    let i
+    for (i = 0; i < (content.children.length); i++) content.children[i].style.display = "none";
+    if (target.className == "selector-prev") {
+        index--;
+        translateX = 100
     }
-    // it has bug & return up result... so shuld create "content div" and (جداکنم) slectors 
-    if (e.target.className.includes("selector-slider") && e.target.className.includes("selector-right")) {
-        childs.forEach((child)=>{
-            if(child.className.includes("active") && child.nextElementSibling != clickSlider.children[3]){
-                // console.log(child.className.includes("active"))
-                child.classList.remove('active');
-                child.nextElementSibling.classList.add('active');
-                console.log(child.nextElementSibling)
-            } 
-            else if(child.className.includes("active") && child.nextElementSibling == clickSlider.children[3]){
-                console.log('aaa')
-                child.classList.remove('active');
-                clickSlider.children[0].classList.add('active')
-            }
-        })
-    }
+    if (target.className == "selector-next") {
+        index++;
+        translateX = -100
+    };
+    if (index < 0) index = content.children.length - 1;
+    if (index > content.children.length - 1) index = 0;
+    content.children[index].style.display = "block";
+    content.children[index].style.transform = `translateX(${translateX}%)`;
+    setTimeout(() => {
+        translateX = 0
+        content.children[index].style.transform = `translateX(${translateX}%)`;
+    }, 1);
+}
+addEventListener('click', (e) => {
+    let target = e.target
+    if (target.className == "selector-prev" || target.className == "selector-next") changeSlider(target);
 })
-// console.info(document.querySelectorAll('.click-slider')[0].children)
 //////////click slider-end//////////
 
 
