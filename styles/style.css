@@ -82,15 +82,20 @@
     margin-right: 0.5rem;
 }
 
+.nav-item i {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
 /* navbar top-end */
 
 /* welcome cover */
 .welcome-cov .active {
     overflow: hidden;
     position: relative;
-    --welcome-cov-img1: url("../imgs/welcome-cover-01.jpg");
-    --welcome-cov-img2: url("../imgs/welcome-cover-02.jpg");
-    --welcome-cov-img3: url("../imgs/welcome-cover-03.jpg");
+    --welcome-cov-img1: url("./imgs/welcome-cover-01.jpg");
+    --welcome-cov-img2: url("./imgs/welcome-cover-02.jpg");
+    --welcome-cov-img3: url("./imgs/welcome-cover-03.jpg");
     width: 100%;
     height: 80vh;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)), var(--welcome-cov-img1);
@@ -126,6 +131,15 @@
 /* header-end */
 
 /* main */
+/* type of building */
+#to-building {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+
+/* type of building-end */
+/* licenses and honors */
 #lic-hon {
     display: flex;
     flex-wrap: nowrap;
@@ -136,6 +150,7 @@
     margin: 2rem;
 }
 
+/* licenses and honors-end */
 /* main-end */
 
 /* all */
@@ -306,9 +321,76 @@ a {
 
 /* click-slider-end */
 
-.active {
+/* cards */
+.card {
     display: block;
+    position: relative;
+    margin: 1rem;
+    width: 15rem;
+    height: 15rem;
+    border-radius: .7rem;
+    border: .2rem solid var(--text-color-2);
+    background-color: var(--text-color-1);
 }
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: .5rem;
+    box-shadow: -2px -2px 15px 2px var(--Trans-back-color1);
+    transition: all .3s;
+}
+
+.card-gradient {
+    position: absolute;
+    display: block;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+    background: linear-gradient(-20deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
+}
+
+.card-txt-on {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%);
+    color: var(--text-color-1);
+    font-size: .2rem;
+    transition: all 0.3s;
+}
+
+.card-txt-under {
+    display: block;
+    color: var(--text-color-3);
+    transition: all 0.1s;
+}
+
+.card:hover .card-img {
+    filter: blur(0.5rem);
+}
+
+.card:hover .card-txt-on {
+    display: block;
+    top: 50%;
+    width: 100%;
+    opacity: 1;
+    color: var(--text-color-1);
+    background-color: var(--Trans-back-color1);
+    font-size: 2rem;
+}
+
+.card:hover .card-txt-under {
+    opacity: 0;
+    transform: translateY(-20%);
+}
+
+/* cards-end */
 
 /* hover */
 .hover {
@@ -326,16 +408,15 @@ a {
 }
 
 /* hover-end */
+
+.active {
+    display: block;
+}
+
 /* all-end */
 
 /* media coery */
 @media screen and (max-width:900px) {
-    /* main */
-    #lic-hon {
-        flex-wrap: wrap;
-    }
-        /* main-end */
-
     .collapse-menu-btn {
         display: flex;
         flex-direction: column;
@@ -380,6 +461,25 @@ a {
         border-left: none;
     }
 
+}
+
+@media screen and (max-width:700px) {
+
+    /* main */
+    /* type of building */
+    #to-building {
+        flex-wrap: wrap;
+    }
+
+    /* type of building-end */
+    /* licenses and honors */
+    #lic-hon {
+        flex-wrap: wrap;
+    }
+
+    /* licenses and honors */
+
+    /* main-end */
 }
 
 /* media coery-end */

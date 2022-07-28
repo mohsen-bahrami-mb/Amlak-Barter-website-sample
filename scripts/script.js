@@ -81,11 +81,11 @@ function changeSlider(getTarget) {
     let translateX;
     let i
     for (i = 0; i < (content.children.length); i++) content.children[i].style.display = "none";
-    if (target.className == "selector-prev") {
+    if (target.classList.contains("selector-prev")) {
         index--;
         translateX = 100
     }
-    if (target.className == "selector-next") {
+    if (target.classList.contains("selector-next")) {
         index++;
         translateX = -100
     };
@@ -100,9 +100,14 @@ function changeSlider(getTarget) {
 }
 addEventListener('click', (e) => {
     let target = e.target
-    if (target.className == "selector-prev" || target.className == "selector-next") changeSlider(target);
+    if (target.classList.contains("selector-prev") || target.classList.contains("selector-next")) changeSlider(target);
 })
 //////////click slider-end//////////
 
 
+//////////home btn//////////
+if (location.pathname.includes('home'))
+    document.querySelector('#navbar1').firstElementChild.style.display = "none";
+else document.querySelector('#navbar1').firstChild.style.display = "block";
+//////////home btn-end//////////
 
