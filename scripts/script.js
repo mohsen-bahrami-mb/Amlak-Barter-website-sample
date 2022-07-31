@@ -1,3 +1,105 @@
+//////////data base//////////
+let buildings = [
+    building001 = {
+        meters: 310,
+        price: 2340000000,
+        region: 1,
+        picture: "./imgs/bu-001.jpg"
+    },
+    building002 = {
+        meters: 400,
+        price: 6700000000,
+        region: 2,
+        picture: "./imgs/bu-002.jpg"
+    },
+    building003 = {
+        meters: 210,
+        price: 195000000,
+        region: 2,
+        picture: "./imgs/bu-003.jpg"
+    },
+    building004 = {
+        meters: 350,
+        price: 4200000000,
+        region: 1,
+        picture: "./imgs/bu-004.jpeg"
+    },
+    building005 = {
+        meters: 250,
+        price: 4000000000,
+        region: 1,
+        picture: "./imgs/bu-005.jpg"
+    },
+    building006 = {
+        meters: 150,
+        price: 980000000,
+        region: 6,
+        picture: "./imgs/bu-006.jpg"
+    },
+    building007 = {
+        meters: 700,
+        price: 10600000000,
+        region: 4,
+        picture: "./imgs/bu-007.jpg"
+    },
+    building008 = {
+        meters: 350,
+        price: 6700000000,
+        region: 4,
+        picture: "./imgs/bu-008.jpg"
+    },
+    building009 = {
+        meters: 350,
+        price: 980000000,
+        region: 5,
+        picture: "./imgs/bu-009.png"
+    },
+    building010 = {
+        meters: 350,
+        price: 4000000000,
+        region: 4,
+        picture: "./imgs/bu-010.jpeg"
+    },
+    building011 = {
+        meters: 430,
+        price: 700000000,
+        region: 3,
+        picture: "./imgs/bu-011.jpg"
+    },
+    building012 = {
+        meters: 120,
+        price: 11000000000,
+        region: 3,
+        picture: "./imgs/bu-012.jpg"
+    },
+    building013 = {
+        meters: 150,
+        price: 4000000000,
+        region: 1,
+        picture: "./imgs/bu-013.jpg"
+    },
+    building014 = {
+        meters: 500,
+        price: 4000000000,
+        region: 6,
+        picture: "./imgs/bu-014.jpg"
+    },
+    building015 = {
+        meters: 120,
+        price: 700000000,
+        region: 5,
+        picture: "./imgs/bu-015.jpg"
+    },
+    building016 = {
+        meters: 120,
+        price: 4000000000,
+        region: 6,
+        picture: "./imgs/bu-016.jpg"
+    },
+]
+//////////data base-end//////////
+
+
 //////////navbar top scroll//////////
 addEventListener('scroll', () => {
     let navTop = document.querySelector(".nav-top")
@@ -110,4 +212,86 @@ if (location.pathname.includes('home'))
     document.querySelector('#navbar1').firstElementChild.style.display = "none";
 else document.querySelector('#navbar1').firstChild.style.display = "block";
 //////////home btn-end//////////
+
+
+//////////point number//////////
+function pointNumber(valueNumber) {
+    let value = valueNumber
+    let refreshValue = value.split('.').join('').split('')
+    let dotePlace = []
+    let finalValue
+    for (let i = 1; i < refreshValue.length; i++) {
+        i % 3 == 0 ? dotePlace.push(i + dotePlace.length) : null;
+    }
+    for (let z = 0; z < dotePlace.length; z++) {
+        refreshValue.splice(refreshValue.length - (dotePlace[z]), 0, `.`)
+    }
+    finalValue = refreshValue.join('')
+    return finalValue || value
+}
+//////////point number-end//////////
+// addEventListener('sele')
+
+//////////input point number//////////
+addEventListener('input', inputBehavior)
+function inputBehavior(e) {
+    e.target.value = pointNumber(e.target.value)
+}
+//////////input point number-end//////////
+
+
+//////////search//////////
+addEventListener('click', (e) => { if (e.target.id == "search-btn-results") SearchResults(e) })
+addEventListener('DOMContentLoaded', (e) => {
+    let buildingsResultRandom = []
+    for (let i = 0; i < buildings.length; i++) {
+        let price = buildings[i].price
+        let meters = buildings[i].meters
+        let region = buildings[i].region
+        let pic = buildings[i].picture
+        buildingsResultRandom.push({ price, meters, region, pic })
+    }
+    MakeResults(buildingsResultRandom)
+})
+
+function SearchResults(e) {
+    this.searchPrices = e.target.parentElement.querySelector("#search-prices").value.split('.').join('');
+    this.searchMeters = e.target.parentElement.querySelector("#search-meters").value.split('.').join('');
+    this.searchRegions = e.target.parentElement.querySelector('#search-regions').selectedIndex;
+    console.log(searchRegions)
+    document.querySelector('#search-results').innerHTML = ''
+    this.buildingsResult = []
+    buildings.forEach((building) => {
+        if ((this.searchPrices > building.price || !this.searchPrices) &&
+            (this.searchMeters > building.meters || !this.searchMeters) &&
+            (this.searchRegions == building.region || this.searchRegions == 0 || this.searchRegions == -1)) {
+            let price = building.price;
+            let meters = building.meters;
+            let region = building.region
+            let pic = building.picture;
+            this.buildingsResult.push({ price, meters, region, pic })
+        }
+    })
+    MakeResults(this.buildingsResult)
+}
+
+function MakeResults(buildingsResult) {
+    buildingsResult.forEach((result) => {
+        let divRes = document.createElement('div')
+        divRes.className = "search-card"
+        divRes.innerHTML =
+            `<img class="search-card-img" src=${result.pic} alt="">
+                <div class="search-card-detail">
+                    <div class="search-card-txt"><span class="t"></span>متراژ:<span class="d point-number">${result.meters}</span></div>
+                    <div class="search-card-txt"><span class="t"></span>قیمت:<span class="d point-number">${result.price}</span></div>
+                    <div class="search-card-txt"><span class="t"></span>منطقه:<span class="d">${result.region}</span></div>
+                    <div class="send-suggestion">ارسال پیشنهاد</div>
+                </div>`
+        document.querySelector('#search-results').appendChild(divRes)
+    })
+    Array.from(document.querySelectorAll('.point-number')).forEach((pn) => {
+        pn.innerHTML = pointNumber(pn.innerHTML);
+    })
+}
+//////////search-end//////////
 
