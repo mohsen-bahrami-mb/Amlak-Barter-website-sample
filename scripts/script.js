@@ -235,7 +235,8 @@ function pointNumber(valueNumber) {
 //////////input point number//////////
 addEventListener('input', inputBehavior)
 function inputBehavior(e) {
-    e.target.value = pointNumber(e.target.value)
+    if (e.target.className.includes("point-number"))
+        e.target.value = pointNumber(e.target.value)
 }
 //////////input point number-end//////////
 
@@ -258,7 +259,6 @@ function SearchResults(e) {
     this.searchPrices = e.target.parentElement.querySelector("#search-prices").value.split('.').join('');
     this.searchMeters = e.target.parentElement.querySelector("#search-meters").value.split('.').join('');
     this.searchRegions = e.target.parentElement.querySelector('#search-regions').selectedIndex;
-    console.log(searchRegions)
     document.querySelector('#search-results').innerHTML = ''
     this.buildingsResult = []
     buildings.forEach((building) => {
